@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+*.egg-info/
+
+# Data — never commit raw data files
+data/
+
+# dbt
+dbt/kenya_inclusion/target/
+dbt/kenya_inclusion/dbt_packages/
+dbt/kenya_inclusion/logs/
+
+# GCP credentials
+*.json
+service_account*.json

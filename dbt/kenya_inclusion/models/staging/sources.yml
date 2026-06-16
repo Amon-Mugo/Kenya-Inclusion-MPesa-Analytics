@@ -1,0 +1,49 @@
+version: 2
+
+sources:
+  - name: kenya_inclusion_raw
+    database: gcp-de-learning-498109
+    schema: kenya_inclusion_raw
+    description: "Raw data for Kenya Financial Inclusion & M-Pesa Analytics project"
+    tables:
+      - name: raw_world_bank_indicators
+        description: "World Bank financial inclusion indicators for Kenya 2010-2024"
+        columns:
+          - name: indicator_code
+            description: "World Bank indicator code e.g. FX.OWN.TOTL.ZS"
+          - name: indicator_name
+            description: "Human readable indicator name"
+          - name: year
+            description: "Year of the data point"
+          - name: value
+            description: "Indicator value"
+
+      - name: raw_mpesa_statistics
+        description: "M-Pesa annual statistics from CBK Payment System Reports"
+        columns:
+          - name: year
+            description: "Year of the statistics"
+          - name: agents
+            description: "Number of M-Pesa agents"
+          - name: customers_millions
+            description: "Number of active customers in millions"
+          - name: transactions_millions
+            description: "Number of transactions in millions"
+          - name: value_ksh_billions
+            description: "Total transaction value in KSh billions"
+
+      - name: raw_finaccess_county
+        description: "FinAccess 2024 county-level financial inclusion survey data"
+        columns:
+          - name: county
+            description: "Kenya county name"
+          - name: county_code
+            description: "Kenya county code 1-47"
+          - name: formal_inclusion_pct
+            description: "Percentage of adults using formal financial services"
+          - name: mobile_money_pct
+            description: "Percentage of adults using mobile money"
+          - name: bank_account_pct
+            description: "Percentage of adults with a bank account"
+          - name: excluded_pct
+            description: "Percentage of adults with no financial access"

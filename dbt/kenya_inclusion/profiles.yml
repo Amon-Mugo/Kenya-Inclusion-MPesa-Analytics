@@ -1,0 +1,19 @@
+kenya_inclusion:
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: gcp-de-learning-498109
+      dataset: kenya_inclusion_raw
+      threads: 1
+      timeout_seconds: 300
+      location: us-central1
+    prod:
+      type: bigquery
+      method: oauth
+      project: gcp-de-learning-498109
+      dataset: kenya_inclusion_raw
+      threads: 4
+      timeout_seconds: 300
+      location: us-central1
+  target: dev

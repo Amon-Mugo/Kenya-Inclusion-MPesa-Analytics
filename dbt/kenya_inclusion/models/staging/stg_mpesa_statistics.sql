@@ -1,4 +1,4 @@
-with source as (
+with base as (
     select * from {{ source('kenya_inclusion_raw', 'raw_mpesa_statistics') }}
 ),
 
@@ -16,7 +16,7 @@ renamed as (
         country_code,
         ingested_at
 
-    from source
+    from base
 )
 
 select * from renamed

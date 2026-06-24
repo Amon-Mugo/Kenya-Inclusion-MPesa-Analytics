@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: mart_county_financial_access
+    description: County-level financial inclusion metrics from the FinAccess household survey.
+    columns:
+      - name: county_code
+        description: Unique numeric code identifying each Kenyan county.
+        tests:
+          - unique
+          - not_null
+      - name: county
+        description: County name.
+        tests:
+          - not_null
+      - name: formal_inclusion_pct
+        description: Percentage of adults with formal financial access.
+        tests:
+          - not_null
+
+  - name: mart_mpesa_financial_overview
+    description: Annual M-Pesa usage and growth statistics, 2015 onward.
+    columns:
+      - name: year
+        description: Calendar year of the observation.
+        tests:
+          - unique
+          - not_null
+      - name: customers_millions
+        description: Number of active M-Pesa customers, in millions.
+        tests:
+          - not_null

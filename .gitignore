@@ -17,3 +17,4 @@ dbt/kenya_inclusion/logs/
 # GCP credentials
 *.json
 service_account*.json
+dbt/kenya_inclusion/.user.yml

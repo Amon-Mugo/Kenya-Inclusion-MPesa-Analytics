@@ -38,6 +38,20 @@ resource "google_cloud_run_v2_service" "kenya_inclusion_api" {
       }
     }
   }
+
+  # NOTE: `terraform plan` will persistently show a diff removing
+  # `scaling.manual_instance_count` and re-flagging `scaling.min_instance_count`.
+  # This is a known limitation in google provider v6.50.0: GCP's Cloud Run Admin
+  # API returns `manual_instance_count = 0` in every GetService response even
+  # when `scaling_mode` is left at its default (AUTOMATIC), where the field is
+  # inert. The provider has no schema attribute to set or ignore this field
+  # directly (confirmed: `manual_instance_count` is rejected as an unsupported
+  # argument in this resource, and `lifecycle.ignore_changes` on the `scaling`
+  # block does not suppress it on subsequent plans).
+  #
+  # Effect: cosmetic only. No resource recreation, no downtime, no change to
+  # actual service behavior. Safe to disregard.
+  # Tracked upstream: https://github.com/hashicorp/terraform-provider-google/issues/20368
 }
 
 resource "google_cloud_run_v2_job_iam_member" "dbt_run_invoker" {

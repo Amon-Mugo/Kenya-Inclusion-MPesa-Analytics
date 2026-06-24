@@ -50,8 +50,8 @@ resource "google_cloudfunctions2_function" "ingestion" {
   }
 
   service_config {
-    timeout_seconds        = 300
-    service_account_email  = google_service_account.dbt_runner.email
+    timeout_seconds       = 300
+    service_account_email = google_service_account.dbt_runner.email
     environment_variables = {
       GCS_BUCKET_NAME = "kenya-inclusion-raw"
       GCP_PROJECT_ID  = var.project_id
